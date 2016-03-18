@@ -42,7 +42,7 @@ describe('gulp-handyman', function () {
 
     it('Should update the default configuration', function () {
 
-      var updatedConf = handyman.mergeConf(defaultConfig, providerConfig);
+      var updatedConf = handyman.mergeConfig(defaultConfig, providerConfig);
 
       expect(updatedConf.key1).to.equal('userKey');
       expect(updatedConf.key2).to.be.true;
@@ -52,7 +52,7 @@ describe('gulp-handyman', function () {
       defaultConfig.key3 = ['A1'];
       providerConfig.key3 = ['A2', 'A1'];
 
-      var updatedConf = handyman.mergeConf(defaultConfig, providerConfig);
+      var updatedConf = handyman.mergeConfig(defaultConfig, providerConfig);
 
       expect(updatedConf.key1).to.equal('userKey');
       expect(updatedConf.key2).to.be.true;

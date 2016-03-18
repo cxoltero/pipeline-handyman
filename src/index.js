@@ -8,7 +8,7 @@ var util = require('gulp-util');
 
 module.exports = {
   clean: clean,
-  mergeConf: mergeConf,
+  mergeConfig: mergeConfig,
   log: log,
   getPackageName: getPackageName,
   slugify: slugify
@@ -18,7 +18,7 @@ function clean(path, done) {
   return del.sync(path, done);
 }
 
-function mergeConf(config, newConfig) {
+function mergeConfig(config, newConfig) {
   return _.merge({}, config, newConfig, replaceArrays);
 }
 
