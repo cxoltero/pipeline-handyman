@@ -5,7 +5,7 @@
 
 | Package       | Description   | Version|
 | ------------- |:-------------:| -----:|
-| pipeline-handyman| Pipeline with resources used in several pipes | 0.4.0 |
+| pipeline-handyman| Pipeline with resources used in several pipes | 1.0.0 |
 
 # Overview
 
@@ -15,9 +15,6 @@ Gulp pipeline that provides several utility methods to facilitate the creation o
 
 `npm install pipeline-handyman --save-dev`
 
-**NOTE: as this project is still pre 1.0.0, it is subject to possible backwards incompatible changes as it matures.
-Also, as part of a repo migration, version 0.1.1 will not install, so please use any of the new versions**
-
 ## Usage
 
 ### clean
@@ -25,10 +22,31 @@ Also, as part of a repo migration, version 0.1.1 will not install, so please use
 This functions provides a way to delete directories synchonrously, by passing an array of globs.
 
 ```javascript
-var gulp = require('gulp');
 var handyman = require('pipeline-handyman');
 
 handyman.clean(['.dest/'], doneCallbackFunction);
+```
+
+### getPackageName
+
+This functions allows you to obtain the package name. This can be useful, for example, during minification processes 
+when you need to name the build packages.
+
+```javascript
+var handyman = require('pipeline-handyman');
+
+handyman.getPackageName();
+```
+
+### log
+
+This functions provides a way to log messages in the terminal. You can get feedback from the gulp process on your 
+terminal through personalized messages.
+
+```javascript
+var handyman = require('pipeline-handyman');
+
+handyman.log('Your message');
 ```
 
 ### mergeConfig
@@ -43,27 +61,16 @@ pipelineConfig = handyman.mergeConfig(defaultConfig, newConfig);
 
 ```
 
-### log
+### slugify
 
-This functions provides a way to log messages in the terminal. You can get feedback from the gulp process on your terminal through personalized messages.
-
-```javascript
-var gulp = require('gulp');
-var handyman = require('pipeline-handyman');
-
-handyman.log('Your message');
-```
-
-### getPackageName
-
-This functions allows you to obtain the package name. This can be useful, for example, during minification processes when you need to name the build packages.
+This functions provides a way to convert strings to a consist snake case format, eg `myString` => `my-string`.
 
 ```javascript
-var gulp = require('gulp');
 var handyman = require('pipeline-handyman');
 
-handyman.getPackageName();
+var myStringSlugified = handyman.slugify('myString');  //return `my-string`
 ```
+
 
 
 ## LICENSE

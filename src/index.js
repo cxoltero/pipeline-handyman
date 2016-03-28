@@ -10,7 +10,10 @@ module.exports = {
   clean: clean,
   mergeConfig: mergeConfig,
   log: log,
+
   getPackageName: getPackageName,
+  log: log,
+  mergeConfig: mergeConfig,
   slugify: slugify
 };
 
