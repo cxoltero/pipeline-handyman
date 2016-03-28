@@ -1,4 +1,4 @@
-/*jshint -W030 */
+/* jshint -W030 */
 'use strict';
 
 var expect = require('chai').expect;
@@ -22,7 +22,9 @@ describe('gulp-handyman', function () {
   });
 
   describe('Update configuration', function () {
-    var defaultConfig, providerConfig;
+    var defaultConfig;
+    var providerConfig;
+    var updatedConf;
 
     beforeEach(function () {
       sinon.spy(util, 'log');
@@ -42,7 +44,7 @@ describe('gulp-handyman', function () {
 
     it('Should update the default configuration', function () {
 
-      var updatedConf = handyman.mergeConfig(defaultConfig, providerConfig);
+      updatedConf = handyman.mergeConfig(defaultConfig, providerConfig);
 
       expect(updatedConf.key1).to.equal('userKey');
       expect(updatedConf.key2).to.be.true;
@@ -52,7 +54,7 @@ describe('gulp-handyman', function () {
       defaultConfig.key3 = ['A1'];
       providerConfig.key3 = ['A2', 'A1'];
 
-      var updatedConf = handyman.mergeConfig(defaultConfig, providerConfig);
+      updatedConf = handyman.mergeConfig(defaultConfig, providerConfig);
 
       expect(updatedConf.key1).to.equal('userKey');
       expect(updatedConf.key2).to.be.true;
@@ -71,13 +73,13 @@ describe('gulp-handyman', function () {
 
     it('Should test that log works when place a flat object', function () {
 
-      handyman.log({length: 4});
+      handyman.log({ length: 4 });
       expect(util.log.calledOnce);
     });
 
     it('Should test that log works when passed an object with two properties', function () {
 
-      handyman.log({hello: 'value', key: 'something'});
+      handyman.log({ hello: 'value', key: 'something' });
       expect(util.log.calledOnce);
     });
 
@@ -88,6 +90,7 @@ describe('gulp-handyman', function () {
     it('Should get package name from package.json', function () {
 
       var handyPackageName = handyman.getPackageName();
+      
       expect(handyPackageName).to.equal(packageName);
     });
 

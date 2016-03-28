@@ -8,9 +8,6 @@ var util = require('gulp-util');
 
 module.exports = {
   clean: clean,
-  mergeConfig: mergeConfig,
-  log: log,
-
   getPackageName: getPackageName,
   log: log,
   mergeConfig: mergeConfig,
@@ -32,8 +29,10 @@ function replaceArrays(a, b) {
 }
 
 function log(msg) {
-  if (typeof(msg) === 'object') {
-    for (var item in msg) {
+  var item;
+
+  if (typeof msg === 'object') {
+    for (item in msg) {
       if (msg.hasOwnProperty(item)) {
         util.log(util.colors.blue(msg[item]));
       }
@@ -45,6 +44,7 @@ function log(msg) {
 
 function getPackageName() {
   var packageJson = JSON.parse(fs.readFileSync('./package.json'));
+
   return packageJson.name;
 }
 
